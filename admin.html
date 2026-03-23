@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Admin</title></head>
+<body>
+<h1>Admin</h1>
+<button onclick="save()">Guardar</button>
+
+<script>
+const SERVICE_KEY = 'rogue-2015-graziella';
+let state = { notes: [] };
+
+async function load() {
+  const res = await fetch('/.netlify/functions/get-status?serviceKey=' + SERVICE_KEY);
+
+  if (res.status === 404) return;
+
+  const data = await res.json();
+  state = data.data;
+}
+
+async function save() {
+  await fetch('/.netlify/functions/save-status', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ serviceKey: SERVICE_KEY, data: state })
+  });
+  alert('guardado');
+}
+
+load();
+</script>
+</body>
+</html>

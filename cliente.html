@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cliente</title></head>
+<body>
+<h1>Cliente</h1>
+
+<script>
+const SERVICE_KEY = 'rogue-2015-graziella';
+
+async function load() {
+  const res = await fetch('/.netlify/functions/get-status?serviceKey=' + SERVICE_KEY);
+  const data = await res.json();
+  console.log(data);
+}
+
+load();
+</script>
+</body>
+</html>

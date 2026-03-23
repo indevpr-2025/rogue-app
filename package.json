@@ -1,0 +1,9 @@
+{
+  "name": "rogue-netlify-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@netlify/neon": "^0.2.0"
+  }
+}
